@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>作品制作全流程 | 钟鑫 · AI 短视频制作人</title>
+<style>
+  :root{
+    --bg:#0d0f14; --bg2:#141821; --card:#171c27; --line:#252c3a;
+    --txt:#e8ecf4; --dim:#9aa6bd; --acc1:#7c5cff; --acc2:#22d3ee;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:radial-gradient(1200px 600px at 80% -10%,rgba(124,92,255,.18),transparent 60%),
+               radial-gradient(900px 500px at 0% 0%,rgba(34,211,238,.12),transparent 55%),
+               var(--bg);
+    color:var(--txt); font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;
+    line-height:1.7; -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;text-decoration:none;}
+  .wrap{max-width:980px;margin:0 auto;padding:0 22px;}
+
+  nav{position:sticky;top:0;z-index:50;backdrop-filter:blur(12px);
+      background:rgba(13,15,20,.72);border-bottom:1px solid var(--line);}
+  nav .wrap{display:flex;align-items:center;justify-content:space-between;height:60px;}
+  .logo{font-weight:700;letter-spacing:.5px;}
+  .logo span{background:linear-gradient(90deg,var(--acc1),var(--acc2));-webkit-background-clip:text;background-clip:text;color:transparent;}
+  .back{font-size:14px;color:var(--dim);border:1px solid var(--line);padding:8px 16px;border-radius:10px;}
+  .back:hover{border-color:var(--acc1);color:var(--txt);}
+
+  header{padding:72px 0 40px;text-align:center;}
+  .badge{display:inline-block;font-size:13px;color:var(--acc2);border:1px solid var(--line);
+         padding:5px 14px;border-radius:999px;margin-bottom:18px;background:rgba(34,211,238,.06);}
+  h1{font-size:clamp(28px,5vw,44px);font-weight:800;letter-spacing:-.5px;}
+  h1 .grad{background:linear-gradient(90deg,var(--acc1),var(--acc2));-webkit-background-clip:text;background-clip:text;color:transparent;}
+  .sub{margin:16px auto 0;max-width:660px;color:var(--dim);font-size:16px;}
+
+  section{padding:30px 0;}
+  .toc{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin:26px 0 8px;}
+  .toc a{font-size:13px;color:var(--dim);border:1px solid var(--line);padding:7px 14px;border-radius:999px;}
+  .toc a:hover{color:var(--txt);border-color:var(--acc1);}
+
+  details{background:var(--card);border:1px solid var(--line);border-radius:16px;margin-bottom:18px;overflow:hidden;}
+  details[open]{border-color:var(--acc1);}
+  summary{cursor:pointer;padding:20px 24px;font-size:18px;font-weight:700;list-style:none;display:flex;align-items:center;gap:12px;}
+  summary::-webkit-details-marker{display:none;}
+  summary .tag{font-size:11px;font-weight:600;color:var(--acc2);border:1px solid rgba(34,211,238,.3);background:rgba(34,211,238,.08);padding:3px 10px;border-radius:999px;flex:none;}
+  summary .meta{margin-left:auto;font-size:12px;color:var(--dim);font-weight:400;}
+  .body{padding:0 24px 26px;}
+  .body h3{font-size:14px;letter-spacing:1px;color:var(--acc2);margin:22px 0 10px;text-transform:uppercase;}
+  ol.steps{counter-reset:s;list-style:none;padding:0;}
+  ol.steps li{position:relative;padding:12px 0 12px 46px;border-bottom:1px dashed var(--line);}
+  ol.steps li:last-child{border-bottom:none;}
+  ol.steps li::before{counter-increment:s;content:counter(s);position:absolute;left:0;top:12px;
+    width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,var(--acc1),var(--acc2));
+    color:#0b0d12;font-weight:800;font-size:14px;display:flex;align-items:center;justify-content:center;}
+  ol.steps li b{color:var(--txt);}
+  ol.steps li p{color:var(--dim);font-size:14.5px;margin-top:3px;}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:18px;}
+  .box{background:var(--bg2);border:1px solid var(--line);border-radius:12px;padding:16px 18px;}
+  .box .h{font-size:13px;color:var(--acc2);margin-bottom:8px;font-weight:600;}
+  .box ul{list-style:none;padding:0;}
+  .box li{font-size:13.5px;color:var(--dim);padding:3px 0;padding-left:14px;position:relative;}
+  .box li::before{content:"▹";position:absolute;left:0;color:var(--acc1);}
+  .quote{font-size:13px;color:var(--dim);border-left:3px solid var(--acc1);padding:10px 14px;background:rgba(124,92,255,.06);border-radius:0 8px 8px 0;margin-top:6px;}
+
+  footer{border-top:1px solid var(--line);padding:28px 0;color:var(--dim);font-size:13px;text-align:center;margin-top:30px;}
+
+  @media(max-width:760px){
+    .grid2{grid-template-columns:1fr;}
+    summary .meta{display:none;}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="logo">钟鑫<span>.</span>作品流程</div>
+    <a class="back" href="index.html">← 返回作品集</a>
+  </div>
+</nav>
+
+<header>
+  <div class="wrap">
+    <div class="badge">Production Pipeline · 全流程拆解</div>
+    <h1>四支成片的<span class="grad">制作全流程</span></h1>
+    <p class="sub">从创意 brief 到可分发成片，每一支都走「剧本 → 分镜 → 提示词 → AIGC 生图生视频 → Python 自动剪辑/配音 → 交付」的同一套工程化管线。点开任一支查看完整步骤。</p>
+    <div class="toc">
+      <a href="#w1">① 健身 Vlog 40s</a>
+      <a href="#w2">② 咖啡馆手冲 40s</a>
+      <a href="#w3">③ 魔爪广告 15s</a>
+      <a href="#w4">④ 孙悟空 30s</a>
+    </div>
+  </div>
+</header>
+
+<section class="wrap">
+
+  <!-- 1 健身 -->
+  <details id="w1" open>
+    <summary><span class="tag">竖屏 9:16</span> 健身 Vlog 40s（日常垂类）<span class="meta">9 镜 · Python+ffmpeg 自动合成</span></summary>
+    <div class="body">
+      <h3>制作全流程</h3>
+      <ol class="steps">
+        <li><b>选题与人设</b><p>锁定「阿哲」26 岁上班族健身日常人设（《健身Vlog男主人设》），定调第一人称轻松 Vlog，平台抖音/视频号/小红书。</p></li>
+        <li><b>剧本与分镜</b><p>写《健身Vlog剧本40s日常版》，拆成《健身Vlog分镜脚本》9 镜：换装→下楼→进门→拉伸→弯举→卧推→跑步机→喝水→告别，定景别、运镜、台词与字幕。</p></li>
+        <li><b>生图提示词</b><p>基于人设写《健身Vlog男主_生图提示词总集》《ChatGPT图片提示词》《运动提示词》，统一画风与人物一致性，作为 AI 生视频的锚点。</p></li>
+        <li><b>AI 生视频</b><p>用即梦/可灵等按镜生成 9 段竖屏素材（720×1280），保留源音轨作环境底噪。</p></li>
+        <li><b>自动剪辑合成</b><p><code>build_vlog_final.py</code> 将 9 段按镜号重排、第 7 镜裁剪至 4s、0–28s 硬切 + 28–40s 两段 0.5s 叠化，scale 到 1080×1920，并用 <code>delogo</code> 去除左上角「AI生成」水印。</p></li>
+        <li><b>字幕烧录</b><p>按时间线脚本用 ffmpeg drawtext 烧录 4 条中文字幕（白字黑边、72px、左下/居中）。</p></li>
+        <li><b>音频层合成</b><p><code>build_audio.py</code> + <code>gen_narration.py</code>：edge-tts 云希男声生成 4 句旁白（0/8/28/36s 落位）；numpy 合成 Lo-fi BGM（Fmaj7-Em7-Dm7-Cmaj7, 82BPM）；旁白出现时 BGM 自动 ducking，峰值约 -3.2dB 无破音。</p></li>
+        <li><b>交付</b><p>成片 mp4 + 制作说明（md/json），含镜号-素材对照、转场、字幕、音频层与去水印说明。</p></li>
+      </ol>
+      <div class="grid2">
+        <div class="box"><div class="h">技术栈</div><ul>
+          <li>Python（隔离 venv）</li><li>ffmpeg（imageio-ffmpeg）</li><li>edge-tts 配音</li><li>numpy 合成 BGM</li><li>ChatGPT 提示词工程</li>
+        </ul></div>
+        <div class="box"><div class="h">交付物</div><ul>
+          <li>健身Vlog_成片_40s_带音频.mp4</li><li>成片制作说明.md / .json</li><li>音频制作说明.md</li><li>build_vlog_final.py / build_audio.py</li>
+        </ul></div>
+      </div>
+      <div class="quote">关键决策：原「Jianying Auto Editor」skill 需未配置的云端 API 且只输出草稿骨架，无法直接渲染；故改用本地 ffmpeg 管线，成片可离线复现。</div>
+    </div>
+  </details>
+
+  <!-- 2 咖啡 -->
+  <details id="w2">
+    <summary><span class="tag">竖屏 9:16</span> 咖啡馆手冲 Vlog 40s（生活方式）<span class="meta">9 镜 · 人物 [LOCK] 锁定</span></summary>
+    <div class="body">
+      <h3>制作全流程</h3>
+      <ol class="steps">
+        <li><b>选题</b><p>周末慢节奏手冲咖啡 vlog，基调安静治愈、文艺 cinematic 暖调，女主全程 [LOCK] 锁定一致性。</p></li>
+        <li><b>剧本与分镜</b><p>写《咖啡馆手冲Vlog_剧本40s》→ 拆《咖啡馆手冲Vlog_分镜脚本》9 镜：玄关出门→街步行→推门→称豆→磨豆→注水→闻香→理碎发→挥手，定台词与音效。</p></li>
+        <li><b>生图/运动提示词</b><p>写《分镜_ChatGPT图片提示词》《分镜_运动提示词》，统一女主（米白开衫、发长、单眼皮/耳钉）与 cinematic 暖调。</p></li>
+        <li><b>AI 生视频</b><p>按镜生成 9 段竖屏素材，镜 3/9 用背影借服装与发长保持可辨识。</p></li>
+        <li><b>自动合成</b><p>复用 Vlog 管线（build_vlog_final.py 同源逻辑）重排、裁剪、转场、scale 1080×1920、去水印；<code>gen_manual.js</code> 还原剪映时间线便于二次精修。</p></li>
+        <li><b>字幕与配音</b><p><code>gen_narration.py</code> 云希旁白按时间码落位（0–4 / 4–13 / 13–23 / 23–32 / 32–40s）；<code>gen_bgm.py</code> 合成适配 BGM。</p></li>
+        <li><b>一致性验证</b><p>《Skill_v1.1.0_一致性验证报告》逐镜核对人脸、服装、场景一致性，锁脸型/眼型/发型/体型不漂移。</p></li>
+        <li><b>交付</b><p>成片 mp4 + 分镜/剧本/一致性报告等工程文档。</p></li>
+      </ol>
+      <div class="grid2">
+        <div class="box"><div class="h">技术栈</div><ul>
+          <li>Python + ffmpeg 管线</li><li>edge-tts 配音</li><li>gen_bgm/gen_narration</li><li>gen_manual.js（剪映还原）</li><li>[LOCK] 人物一致性锁</li>
+        </ul></div>
+        <div class="box"><div class="h">交付物</div><ul>
+          <li>咖啡馆手冲Vlog_成片_40s_带音频.mp4</li><li>剧本 / 分镜脚本 / 图片提示词</li><li>一致性验证报告.md</li><li>pipeline.json</li>
+        </ul></div>
+      </div>
+      <div class="quote">复用同一套 Vlog 管线，把「健身」验证过的流程迁移到「咖啡」垂类，单条成片制作周期被显著压缩、质量稳定可复现。</div>
+    </div>
+  </details>
+
+  <!-- 3 魔爪 -->
+  <details id="w3">
+    <summary><span class="tag">横屏 16:9</span> 魔爪饮料 15s 广告（商业）<span class="meta">6 镜 · 品牌 brief 对齐</span></summary>
+    <div class="body">
+      <h3>制作全流程</h3>
+      <ol class="steps">
+        <li><b>创意 Brief</b><p>定位 18–30 岁学生/夜班族/玩家，卖点能量补充；创意「用『困』做钩子，『野性能量』做兑现」。附辩证策略：避开极限运动+重低音的审美疲劳套路，把产品放进熬夜赶缝隙。</p></li>
+        <li><b>剧本与分镜</b><p>写《魔爪饮料15秒广告剧本》6 镜：揉眼→开罐→畅饮→握拳→快剪→定格，定情绪弧线（疲惫→爆发→满电→定格）与旁白文案。</p></li>
+        <li><b>生图/生视频提示词</b><p>附 MJ/CogVideoX 可直接用的提示词（开罐特写、畅饮、罐体定格），[LOCK] 锁男主「阿野」人物一致性。</p></li>
+        <li><b>AI 生视频</b><p>按镜生成 6 段 1920×1080 素材；视觉语法前半低饱和手持微抖，开罐后升格、饱和、光斑炸裂。</p></li>
+        <li><b>自动剪辑</b><p><code>pipeline.json</code> 驱动 6 镜硬切拼接、字幕烧录（白字黑边，时间点 2.5/5/8/13s），scale 1920×1080 30fps。</p></li>
+        <li><b>配音与音乐</b><p>edge-tts 云希男声热血版生成 4 句旁白；numpy 合成 BGM（Am-F-C-G 128BPM 电子），旁白出现时 ducking。</p></li>
+        <li><b>合规复核</b><p>避免「最/第一/唯一」等绝对化用语，核对品牌 slogan 商标授权，发布前复核广告话术。</p></li>
+        <li><b>交付</b><p>15s 成片 + 剧本 + 制作说明 + 管线配置。</p></li>
+      </ol>
+      <div class="grid2">
+        <div class="box"><div class="h">技术栈</div><ul>
+          <li>pipeline.json 配置驱动</li><li>Python + ffmpeg</li><li>edge-tts 配音</li><li>numpy BGM 合成</li><li>MJ / CogVideoX 生图生视频</li>
+        </ul></div>
+        <div class="box"><div class="h">交付物</div><ul>
+          <li>魔爪饮料15秒电视广告_成片_15s_带音频.mp4</li><li>魔爪饮料15秒广告剧本.md</li><li>pipeline.json / scenes.json</li><li>成片/制作说明.json</li>
+        </ul></div>
+      </div>
+      <div class="quote">辩证视角：15 秒靠峰值刺激建立记忆，但套路化易疲劳；以「困」这一普遍痛点切入，兼顾记忆点与真实代入感。</div>
+    </div>
+  </details>
+
+  <!-- 4 孙悟空 -->
+  <details id="w4">
+    <summary><span class="tag">横屏 16:9</span> 孙悟空大闹天宫 30s（AI 电影感）<span class="meta">4 镜 · character_mode</span></summary>
+    <div class="body">
+      <h3>制作全流程</h3>
+      <ol class="steps">
+        <li><b>选题</b><p>古典神话《西游记》第四至七回，character_mode 强锁人物一致性，国风 guofeng 工笔重彩，红金主色。</p></li>
+        <li><b>剧本与分镜</b><p>写《孙悟空大闹天宫_剧本30s》4 镜：出世→龙宫夺棒→天兵对决→八卦炉+傲立，44 字旁白，情绪出世→张扬→激战→傲然。</p></li>
+        <li><b>人物锚定</b><p>写 [LOCK] 一致性锁（猴相/凤翅紫金冠/锁子黄金甲/金箍棒等），生成角色锚图 + 三视图，供逐镜复用。</p></li>
+        <li><b>文生图</b><p>按《生图生视频交付规格》逐镜写提示词（[LOCK] 逐字复用），1792×1024 16:9 guofeng 工笔重彩，输出 4 张。</p></li>
+        <li><b>图生视频</b><p>4 段 1080P 运动提示词：推近石猴半身、绕棒旋转、天兵横移、破炉仰拍，对应各镜 target_dur。</p></li>
+        <li><b>自动合成</b><p><code>assemble.py</code> 按 scenes.json 拼接：镜 2/3/4 为 0.5s 叠化、镜 1 硬切；字幕 16:9 上沿白字描边。</p></li>
+        <li><b>配音与 BGM</b><p>edge-tts 生成旁白（本环境 TTS 被拦截则降级静音轨，本地重跑 pipeline.py 可补）；numpy 合成 BGM；混音封装 _带音频.mp4。</p></li>
+        <li><b>交付</b><p>30s 成片 + 剧本 / 交付规格 / 角色锚图 / 三视图。</p></li>
+      </ol>
+      <div class="grid2">
+        <div class="box"><div class="h">技术栈</div><ul>
+          <li>character_mode 一致性锁</li><li>文生图 + 图生视频</li><li>assemble.py 自动拼接</li><li>edge-tts 配音</li><li>numpy BGM 合成</li>
+        </ul></div>
+        <div class="box"><div class="h">交付物</div><ul>
+          <li>孙悟空大闹天宫_成片_30s_带音频.mp4</li><li>剧本30s / 生图生视频交付规格</li><li>角色锚图 + 三视图</li><li>scenes.json / pipeline.json</li>
+        </ul></div>
+      </div>
+      <div class="quote">人物一致性核心：所有镜头提示词逐字复用 [LOCK] 锁，配角色锚图与三视图，确保 4 镜间猴相、冠甲、金箍棒零漂移。</div>
+    </div>
+  </details>
+
+</section>
+
+<footer>
+  <div class="wrap">© 2026 钟鑫 · AI 短视频制作人 · 全流程文档配套作品集</div>
+</footer>
+
+</body>
+</html>

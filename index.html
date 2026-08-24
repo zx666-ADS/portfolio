@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>作品集 | AI 短视频制作人</title>
+<style>
+  :root{
+    --bg:#0d0f14; --bg2:#141821; --card:#171c27; --line:#252c3a;
+    --txt:#e8ecf4; --dim:#9aa6bd; --acc1:#7c5cff; --acc2:#22d3ee;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:radial-gradient(1200px 600px at 80% -10%,rgba(124,92,255,.18),transparent 60%),
+               radial-gradient(900px 500px at 0% 0%,rgba(34,211,238,.12),transparent 55%),
+               var(--bg);
+    color:var(--txt); font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;
+    line-height:1.6; -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;text-decoration:none;}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 22px;}
+
+  /* NAV */
+  nav{position:sticky;top:0;z-index:50;backdrop-filter:blur(12px);
+      background:rgba(13,15,20,.72);border-bottom:1px solid var(--line);}
+  nav .wrap{display:flex;align-items:center;justify-content:space-between;height:60px;}
+  .logo{font-weight:700;letter-spacing:.5px;}
+  .logo span{background:linear-gradient(90deg,var(--acc1),var(--acc2));-webkit-background-clip:text;background-clip:text;color:transparent;}
+  .navlinks{display:flex;gap:26px;font-size:14px;color:var(--dim);}
+  .navlinks a:hover{color:var(--txt);}
+
+  /* HERO */
+  header{padding:96px 0 70px;text-align:center;}
+  .badge{display:inline-block;font-size:13px;color:var(--acc2);border:1px solid var(--line);
+         padding:5px 14px;border-radius:999px;margin-bottom:22px;background:rgba(34,211,238,.06);}
+  h1{font-size:clamp(34px,6vw,58px);line-height:1.12;font-weight:800;letter-spacing:-.5px;}
+  h1 .grad{background:linear-gradient(90deg,var(--acc1),var(--acc2));-webkit-background-clip:text;background-clip:text;color:transparent;}
+  .sub{margin:20px auto 0;max-width:640px;color:var(--dim);font-size:17px;}
+  .cta{margin-top:34px;display:flex;gap:14px;justify-content:center;flex-wrap:wrap;}
+  .btn{padding:13px 26px;border-radius:12px;font-weight:600;font-size:15px;transition:.2s;}
+  .btn.primary{background:linear-gradient(90deg,var(--acc1),var(--acc2));color:#0b0d12;}
+  .btn.primary:hover{filter:brightness(1.08);transform:translateY(-1px);}
+  .btn.ghost{border:1px solid var(--line);color:var(--txt);}
+  .btn.ghost:hover{border-color:var(--acc1);}
+
+  /* SECTIONS */
+  section{padding:64px 0;}
+  .sec-title{font-size:13px;letter-spacing:3px;text-transform:uppercase;color:var(--acc2);margin-bottom:10px;}
+  h2{font-size:30px;font-weight:800;margin-bottom:8px;}
+  .sec-lead{color:var(--dim);max-width:680px;margin-bottom:38px;}
+
+  /* ABOUT */
+  .about-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:34px;align-items:start;}
+  .about p{color:var(--dim);margin-bottom:14px;}
+  .stat{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;}
+  .stat .box{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;}
+  .stat .n{font-size:26px;font-weight:800;background:linear-gradient(90deg,var(--acc1),var(--acc2));-webkit-background-clip:text;background-clip:text;color:transparent;}
+  .stat .l{font-size:13px;color:var(--dim);margin-top:4px;}
+
+  /* SKILLS */
+  .skills{display:flex;flex-wrap:wrap;gap:12px;}
+  .tag{background:var(--card);border:1px solid var(--line);border-radius:999px;padding:9px 16px;font-size:14px;color:var(--txt);}
+  .tag b{color:var(--acc2);font-weight:600;}
+
+  /* PROJECTS */
+  .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:26px;}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:18px;overflow:hidden;display:flex;flex-direction:column;transition:.22s;}
+  .card:hover{border-color:var(--acc1);transform:translateY(-3px);box-shadow:0 18px 40px rgba(0,0,0,.35);}
+  .card video{width:100%;display:block;background:#000;aspect-ratio:16/9;object-fit:cover;}
+  .card video.vert{aspect-ratio:16/9;}
+  .card video.vert:fullscreen{aspect-ratio:auto;object-fit:contain;width:100%;height:100%;background:#000;}
+  .card .body{padding:20px 22px 24px;}
+  .card h3{font-size:19px;margin-bottom:8px;}
+  .card p{color:var(--dim);font-size:14.5px;margin-bottom:14px;}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;}
+  .chip{font-size:12px;color:var(--acc2);background:rgba(34,211,238,.08);border:1px solid rgba(34,211,238,.22);padding:4px 11px;border-radius:999px;}
+
+  /* CONTACT */
+  .contact{background:linear-gradient(135deg,rgba(124,92,255,.14),rgba(34,211,238,.10));border:1px solid var(--line);border-radius:20px;padding:42px;text-align:center;}
+  .contact h2{margin-bottom:10px;}
+  .contact p{color:var(--dim);margin-bottom:22px;}
+  .contact .row{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;font-size:15px;}
+  .contact .row a{padding:11px 22px;border:1px solid var(--line);border-radius:12px;background:rgba(0,0,0,.2);}
+  .contact .row a:hover{border-color:var(--acc1);}
+
+  footer{border-top:1px solid var(--line);padding:28px 0;color:var(--dim);font-size:13px;text-align:center;}
+
+  @media(max-width:760px){
+    .navlinks{display:none;}
+    .about-grid{grid-template-columns:1fr;}
+    .grid{grid-template-columns:1fr;}
+    .contact{padding:30px 20px;}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="logo">钟鑫<span>.</span>作品集</div>
+    <div class="navlinks">
+      <a href="#about">关于</a>
+      <a href="#skills">能力</a>
+      <a href="#work">作品</a>
+      <a href="#contact">联系</a>
+    </div>
+  </div>
+</nav>
+
+<header>
+  <div class="wrap">
+    <div class="badge">AI 原生内容生产 · 全链路交付</div>
+    <h1>我是 <span class="grad">AI 短视频制作人</span><br/>把创意闭环成可分发视频</h1>
+    <p class="sub">专注健身、生活方式与本地餐饮赛道，覆盖抖音、小红书、视频号、今日头条多平台。用 AI 工具加轻量代码，打通选题、脚本、AIGC 生图生视频、剪辑成片到数据复盘全流程。</p>
+    <div class="cta">
+      <a class="btn primary" href="#work">查看作品</a>
+      <a class="btn ghost" href="#contact">联系我</a>
+    </div>
+  </div>
+</header>
+
+<section id="about">
+  <div class="wrap">
+    <div class="sec-title">About</div>
+    <h2>关于我</h2>
+    <div class="about-grid">
+      <div class="about">
+        <p>我是一名 AI 原生内容生产者，擅长把"一个领域想法"变成"可分发的内容成品"。使用Codex搭建了多条从剧本到成片的自动化视频管线。</p>
+        <p>计算机科学与技术本科，主修 Python、计算机视觉与 AIGC 应用。我的优势在于端到端交付：不仅会用 AI 工具，还能用 Python 把重复性环节自动化，并用数据思维持续优化内容，让单条成片制作周期大幅压缩、支撑账号稳定日更。</p>
+        <p>1 年新媒体实战：独立操盘健身抖音号从 0 到 1（单条 10w+ 播放、5000+ 点赞），并统筹抖音、小红书、视频号、今日头条多平台本地餐饮账号（累计 60+ 条视频、到店客流 +35%）。相比纯剪辑或纯策划，我坐在"内容 × AIGC × 轻量工程"三者交集。</p>
+      </div>
+      <div class="stat">
+        <div class="box"><div class="n">10w+</div><div class="l">单条播放峰值</div></div>
+        <div class="box"><div class="n">60+</div><div class="l">累计产出视频</div></div>
+        <div class="box"><div class="n">+35%</div><div class="l">到店客流提升</div></div>
+        <div class="box"><div class="n">1 年</div><div class="l">新媒体实战</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="wrap">
+    <div class="sec-title">Skills</div>
+    <h2>核心能力</h2>
+    <p class="sec-lead">工具会迭代，底层能力长青。我打磨的是可迁移的视频生产栈。</p>
+      <div class="skills">
+      <div class="tag"><b>AI 视频生成</b> 可灵 / 即梦</div>
+      <div class="tag"><b>提示词工程</b> 文生图 / 图生视频</div>
+      <div class="tag"><b>AI 工具</b> ChatGPT / Claude 脚本</div>
+      <div class="tag"><b>Python 自动化</b> 成片合成管线</div>
+      <div class="tag"><b>剪映剪辑</b> 智能剪辑 / AI 配音 / 字幕</div>
+      <div class="tag"><b>多平台运营</b> 抖音 / 小红书 / 视频号 / 头条</div>
+      <div class="tag"><b>健身垂类</b> 内容策略</div>
+      <div class="tag"><b>数据复盘</b> 播放 / 流量 / 转化</div>
+    </div>
+  </div>
+</section>
+
+<section id="work">
+  <div class="wrap">
+    <div class="sec-title">Portfolio</div>
+    <h2>代表作品</h2>
+    <p class="sec-lead">以下为真实成片，可直接播放。覆盖垂类 Vlog、商业广告、新闻自动化与 AI 电影感四种能力维度。</p>
+    <div class="grid">
+
+      <div class="card">
+        <video class="vert" controls preload="none" poster="media/fitness_40s.jpg" src="media/fitness_40s.mp4"></video>
+        <div class="body">
+          <h3>健身 Vlog 40s（全链路）</h3>
+          <p>从剧本、分镜、生图提示词到自动配音与 BGM 的端到端 AI 短视频生产，单条成片由 Python 管线合成。</p>
+          <div class="chips"><span class="chip">健身垂类</span><span class="chip">全链路</span><span class="chip">Python 管线</span></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <video controls preload="none" poster="media/monster_15s.jpg" src="media/monster_15s.mp4"></video>
+        <div class="body">
+          <h3>魔爪饮料 15s 广告</h3>
+          <p>15 秒电视广告成片，按品牌调性完成剧本、分镜拆解与三阶段生图、视频、成片交付，对齐商业 brief。</p>
+          <div class="chips"><span class="chip">商业广告</span><span class="chip">品牌 brief</span><span class="chip">分镜</span></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <video class="vert" controls preload="none" poster="media/coffee_40s.jpg" src="media/coffee_40s.mp4"></video>
+        <div class="body">
+          <h3>咖啡馆手冲 Vlog 40s</h3>
+          <p>生活方式垂类短片，从剧本、分镜、AIGC 生图到自动配音与 BGM 的端到端 AI 生产，单条成片由 Python 管线合成。</p>
+          <div class="chips"><span class="chip">生活方式</span><span class="chip">全链路</span><span class="chip">Python 管线</span></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <video controls preload="none" poster="media/wukong_30s.jpg" src="media/wukong_30s.mp4"></video>
+        <div class="body">
+          <h3>孙悟空大闹天宫 30s</h3>
+          <p>电影感 AI 短片，展示文生图角色锚定、图生视频与镜头运动控制的完整流程掌控力。</p>
+          <div class="chips"><span class="chip">AI 电影感</span><span class="chip">角色一致性</span><span class="chip">生图+视频</span></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap">
+    <div class="contact">
+      <div class="sec-title">Contact</div>
+      <h2>一起做点好内容</h2>
+      <p>base 深圳，期望薪资 8-12K。欢迎 HR 与内容团队直接联系，查看完整作品与流程文档。</p>
+      <div class="row">
+        <a href="tel:13247533068">电话 13247533068</a>
+        <a href="mailto:1787951951@qq.com">邮箱 1787951951@qq.com</a>
+        <a href="#">微信 ZxsDsG03</a>
+        <a href="workflows.html">作品流程文档</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">© 2026 钟鑫 · AI 短视频制作人 · 本页作品均由 AI 工具辅助生产</div>
+</footer>
+
+</body>
+</html>
