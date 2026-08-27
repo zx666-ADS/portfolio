@@ -85,13 +85,11 @@
 <header>
   <div class="wrap">
     <div class="badge">Production Pipeline · 全流程拆解</div>
-    <h1>四支成片的<span class="grad">制作全流程</span></h1>
+    <h1>两支成片的<span class="grad">制作全流程</span></h1>
     <p class="sub">从创意 brief 到可分发成片，每一支都走「剧本 → 分镜 → 提示词 → AIGC 生图生视频 → 剪映+Python 自动剪辑/配音 → 交付」的同一套工程化管线。点开任一支查看完整步骤。</p>
     <div class="toc">
       <a href="#w1">① 健身 Vlog 40s</a>
       <a href="#w2">② 咖啡馆手冲 40s</a>
-      <a href="#w3">③ 魔爪广告 15s</a>
-      <a href="#w4">④ 孙悟空 30s</a>
     </div>
   </div>
 </header>
@@ -149,60 +147,6 @@
         </ul></div>
       </div>
       <div class="quote">复用同一套 Vlog 管线，把「健身」验证过的流程迁移到「咖啡」垂类，单条成片制作周期被显著压缩、质量稳定可复现。</div>
-    </div>
-  </details>
-
-  <!-- 3 魔爪 -->
-  <details id="w3">
-    <summary><span class="tag">横屏 16:9</span> 魔爪饮料 15s 广告（商业）<span class="meta">6 镜 · 品牌 brief 对齐</span></summary>
-    <div class="body">
-      <h3>制作全流程</h3>
-      <ol class="steps">
-        <li><b>创意 Brief</b><p>定位 18–30 岁学生/夜班族/玩家，卖点能量补充；创意「用『困』做钩子，『野性能量』做兑现」。附辩证策略：避开极限运动+重低音的审美疲劳套路，把产品放进熬夜赶缝隙。</p></li>
-        <li><b>剧本与分镜</b><p>写《魔爪饮料15秒广告剧本》6 镜：揉眼→开罐→畅饮→握拳→快剪→定格，定情绪弧线（疲惫→爆发→满电→定格）与旁白文案。</p></li>
-        <li><b>生图/生视频提示词</b><p>附 MJ/CogVideoX 可直接用的提示词（开罐特写、畅饮、罐体定格），[LOCK] 锁男主「阿野」人物一致性。</p></li>
-        <li><b>AI 生视频</b><p>按镜生成 6 段 1920×1080 素材；视觉语法前半低饱和手持微抖，开罐后升格、饱和、光斑炸裂。</p></li>
-        <li><b>自动剪辑</b><p><code>pipeline.json</code> 驱动 6 镜硬切拼接、字幕烧录（白字黑边，时间点 2.5/5/8/13s），scale 1920×1080 30fps。</p></li>
-        <li><b>配音与音乐</b><p>edge-tts 云希男声热血版生成 4 句旁白；numpy 合成 BGM（Am-F-C-G 128BPM 电子），旁白出现时 ducking。</p></li>
-        <li><b>合规复核</b><p>避免「最/第一/唯一」等绝对化用语，核对品牌 slogan 商标授权，发布前复核广告话术。</p></li>
-        <li><b>交付</b><p>15s 成片 + 剧本 + 制作说明 + 管线配置。</p></li>
-      </ol>
-      <div class="grid2">
-        <div class="box"><div class="h">技术栈</div><ul>
-          <li>pipeline.json 配置驱动</li><li>Python + ffmpeg</li><li>edge-tts 配音</li><li>numpy BGM 合成</li><li>MJ / CogVideoX 生图生视频</li>
-        </ul></div>
-        <div class="box"><div class="h">交付物</div><ul>
-          <li>魔爪饮料15秒电视广告_成片_15s_带音频.mp4</li><li>魔爪饮料15秒广告剧本.md</li><li>pipeline.json / scenes.json</li><li>成片/制作说明.json</li>
-        </ul></div>
-      </div>
-      <div class="quote">辩证视角：15 秒靠峰值刺激建立记忆，但套路化易疲劳；以「困」这一普遍痛点切入，兼顾记忆点与真实代入感。</div>
-    </div>
-  </details>
-
-  <!-- 4 孙悟空 -->
-  <details id="w4">
-    <summary><span class="tag">横屏 16:9</span> 孙悟空大闹天宫 30s（AI 电影感）<span class="meta">4 镜 · character_mode</span></summary>
-    <div class="body">
-      <h3>制作全流程</h3>
-      <ol class="steps">
-        <li><b>选题</b><p>古典神话《西游记》第四至七回，character_mode 强锁人物一致性，国风 guofeng 工笔重彩，红金主色。</p></li>
-        <li><b>剧本与分镜</b><p>写《孙悟空大闹天宫_剧本30s》4 镜：出世→龙宫夺棒→天兵对决→八卦炉+傲立，44 字旁白，情绪出世→张扬→激战→傲然。</p></li>
-        <li><b>人物锚定</b><p>写 [LOCK] 一致性锁（猴相/凤翅紫金冠/锁子黄金甲/金箍棒等），生成角色锚图 + 三视图，供逐镜复用。</p></li>
-        <li><b>文生图</b><p>按《生图生视频交付规格》逐镜写提示词（[LOCK] 逐字复用），1792×1024 16:9 guofeng 工笔重彩，输出 4 张。</p></li>
-        <li><b>图生视频</b><p>4 段 1080P 运动提示词：推近石猴半身、绕棒旋转、天兵横移、破炉仰拍，对应各镜 target_dur。</p></li>
-        <li><b>自动合成</b><p><code>assemble.py</code> 按 scenes.json 拼接：镜 2/3/4 为 0.5s 叠化、镜 1 硬切；字幕 16:9 上沿白字描边。</p></li>
-        <li><b>配音与 BGM</b><p>edge-tts 生成旁白（本环境 TTS 被拦截则降级静音轨，本地重跑 pipeline.py 可补）；numpy 合成 BGM；混音封装 _带音频.mp4。</p></li>
-        <li><b>交付</b><p>30s 成片 + 剧本 / 交付规格 / 角色锚图 / 三视图。</p></li>
-      </ol>
-      <div class="grid2">
-        <div class="box"><div class="h">技术栈</div><ul>
-          <li>character_mode 一致性锁</li><li>文生图 + 图生视频</li><li>assemble.py 自动拼接</li><li>edge-tts 配音</li><li>numpy BGM 合成</li>
-        </ul></div>
-        <div class="box"><div class="h">交付物</div><ul>
-          <li>孙悟空大闹天宫_成片_30s_带音频.mp4</li><li>剧本30s / 生图生视频交付规格</li><li>角色锚图 + 三视图</li><li>scenes.json / pipeline.json</li>
-        </ul></div>
-      </div>
-      <div class="quote">人物一致性核心：所有镜头提示词逐字复用 [LOCK] 锁，配角色锚图与三视图，确保 4 镜间猴相、冠甲、金箍棒零漂移。</div>
     </div>
   </details>
 
